@@ -5,7 +5,7 @@ const app = express();
 // interface Teste {}
 
 app.get('/', (req, res) => {
-  return res.send('Ol, dev!');
+  return res.send('Olá, dev!');
 });
 
 export { app };
