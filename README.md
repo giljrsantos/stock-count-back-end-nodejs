@@ -43,6 +43,15 @@ Após a instalação criei o arquivo `.prettierrc` na raiz do projeto. No mesmo 
 
 Depois de fazer todo o processo de configuração,  podemos criar um script dentro do package.json para formatar todos os arquivos desejados. Criei o script `format` para executar esta tarefa:
 
+E no terminal você deve chamar `npm run format`
+
+```json
+  "scripts": {
+    "start": "nodemon src/index.ts",
+    "format": "npx prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+  },
+```
+
 
 
 
