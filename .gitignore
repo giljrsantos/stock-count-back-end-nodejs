@@ -1,3 +1,4 @@
 /node_modules
 dadosAula.txt
 .env
+package-lock.json
