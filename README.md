@@ -8,6 +8,7 @@ A funcionalidade dessa API é um `CRUD` com os métodos `GET, POST, PATCH, PUT e
 ```json
 "dependencies": {
     "express": "^4.19.2",
+    "http-status-code": "^2.1.0",
 },
 "devDependencies": {
     "@types/express": "^4.17.21",
