@@ -1,11 +1,16 @@
 import express from 'express';
 
-const app = express();
+import { router } from './routes';
+
+const server = express();
+
+server.use(express.json())
+
+server.use(router);
+
+
 
 // interface Teste {}
 
-app.get('/', (req, res) => {
-  return res.send('Olá, dev!');
-});
 
-export { app };
+export { server };

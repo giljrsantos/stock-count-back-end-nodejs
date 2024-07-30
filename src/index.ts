@@ -1,4 +1,4 @@
-import { app } from './server/server';
+import { server } from './server/server';
 // import express from 'express';
 
 // import bodyParser from 'body-parser';
@@ -7,12 +7,12 @@ import { app } from './server/server';
 
 // const app = express();
 
-const port = 3000;
+const port = 8086;
 
 // app.use(bodyParser.json());
 
 // app.use('/api/v1', routes);
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+server.listen(port, () => {
+  console.log(`Api running on port ${port}`);
 });
