@@ -13,6 +13,7 @@ A funcionalidade dessa API é um `CRUD` com os métodos `GET, POST, PATCH, PUT e
 "devDependencies": {
     "@types/express": "^4.17.21",
     "nodemon": "^3.1.4",
+    "dotenv": "^16.4.5",
     "ts-node-dev": "^2.0.0",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4"
