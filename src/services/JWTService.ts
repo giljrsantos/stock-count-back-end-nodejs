@@ -1,6 +1,5 @@
 import * as jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 interface IJwtData {
   uid: number;

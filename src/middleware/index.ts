@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import md5 from 'md5';
 import crypto from 'crypto';
 
 import pool from './../database/index';

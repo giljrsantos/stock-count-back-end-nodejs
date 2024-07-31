@@ -7,12 +7,12 @@ import { server } from './server/server';
 
 // const app = express();
 
-const port = 8086;
+//const port = 8086;
 
 // app.use(bodyParser.json());
 
 // app.use('/api/v1', routes);
 
-server.listen(port, () => {
-  console.log(`Api running on port ${port}`);
+server.listen(process.env.PORT || 8086, () => {
+  console.log(`Api running on port ${process.env.PORT || 8086}`);
 });
