@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 
-import pool from './../database/index';
+import {pool} from '../server/database/index';
 
 import { authenticate } from './../middleware/index';
 
@@ -8,7 +8,7 @@ const routes = express.Router();
 
 // Rota de exemplo para buscar dados após autenticação
 routes.post(
-  '/login',
+  '/api/v1/login',
   authenticate,
   async (req: Request, res: Response) => {
     try {

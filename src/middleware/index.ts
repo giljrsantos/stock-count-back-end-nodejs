@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import crypto from 'crypto';
 
-import pool from './../database/index';
+import pool from '../server/database/index';
 
 export const authenticate = async (
   req: Request,

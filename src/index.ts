@@ -11,7 +11,7 @@ import { server } from './server/server';
 
 // app.use(bodyParser.json());
 
-// app.use('/api/v1', routes);
+//app.use('/api/v1', routes);
 
 server.listen(process.env.PORT || 8086, () => {
   console.log(`Api running on port ${process.env.PORT || 8086}`);
