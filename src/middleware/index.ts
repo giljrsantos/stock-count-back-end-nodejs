@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import crypto from 'crypto';
+import { pool } from '../server/database';
 
-import pool from '../server/database/index';
+//import pool from '../server/database/index';
 
 export const authenticate = async (
   req: Request,
@@ -22,10 +23,7 @@ export const authenticate = async (
   }
 
   try {
-    const [rows] = await pool.query(
-      `SELECT * FROM Inv_operador WHERE usuario = ? AND senha = ?`,
-      [usuario, hash],
-    );
+    const [rows] = await pool.query(`SELECT * FROM aluno`);
 
     if (Array.isArray(rows) && rows.length > 0) {
       next();

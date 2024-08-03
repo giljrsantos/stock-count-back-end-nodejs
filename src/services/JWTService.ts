@@ -1,6 +1,5 @@
 import * as jwt from 'jsonwebtoken';
 
-
 interface IJwtData {
   uid: number;
 }

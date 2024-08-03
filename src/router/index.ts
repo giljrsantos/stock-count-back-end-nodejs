@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 
-import {pool} from '../server/database/index';
+import { pool } from '../server/database/index';
 
 import { authenticate } from './../middleware/index';
 
@@ -20,25 +20,19 @@ routes.post(
 );
 
 // Rota de busca das redes cadastradas após autenticação
-routes.get(
-  '/rede',
-  authenticate,
-  async (req: Request, res: Response) => {
-    try {
-      const [rows] = await pool.query(
-        'SELECT * FROM Inv_rede',
-      );
+routes.get('/rede', async (req: Request, res: Response) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM aluno');
 
-      if (!rows) {
-        return res.status(404).send('No data found.');
-      }
-
-      res.json(rows);
-    } catch (err) {
-      console.error('Error occurred:', err);
-      res.status(500).send(` Server error: ${err}`);
+    if (!rows) {
+      return res.status(404).send('No data found.');
     }
-  },
-);
+
+    res.json(rows);
+  } catch (err) {
+    console.error('Error occurred:', err);
+    res.status(500).send(` Server error: ${err}`);
+  }
+});
 
 export default routes;
