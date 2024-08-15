@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { IRedes } from '../../../interface/i-Redes';
 import * as yup from 'yup';
+import { StatusCodes } from 'http-status-codes';
 
 const bodyValidation: yup.SchemaOf<IRedes> = yup.object().shape({
     id_master: yup.number().required(),
@@ -20,15 +21,19 @@ export const create = async (
     let validateData: IRedes | undefined = undefined;
 
     try{
-        validateData = await bodyValidation.validate(req.body);
-    }catch(error){
-        const yupError = error as yup.ValidationError;
-        console.log(`Error ${yupError}`);
+        validateData = await bodyValidation.validate(req.body, {abortEarly: false});
+    }catch(err){
+        const yupError = err as yup.ValidationError;
+        
+        const errors: Record<string, string> = {};
 
-        return res.json({
-            errors: {
-                default: yupError.message,
-            }
+        yupError.inner.forEach(error => {
+            if(error.path === undefined) return;
+           errors[error.path] = error.message;
+        });
+
+        return res.status(StatusCodes.BAD_REQUEST).json({
+            errors,
         });
     };
 
