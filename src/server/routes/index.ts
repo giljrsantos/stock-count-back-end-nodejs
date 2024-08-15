@@ -8,6 +8,10 @@ router.get('/api/v1/health', (_, res) => {
   return res.send('Olá, dev!');
 });
 
-router.post('/api/v1/redes', RedesController.create);
+router.post(
+  '/api/v1/redes',
+  RedesController.createBodyValidator,
+  RedesController.create,
+);
 
 export { router };

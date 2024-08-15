@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, RequestHandler, Response } from 'express';
 import { IRedes } from '../../../interface/i-Redes';
 import * as yup from 'yup';
 import { StatusCodes } from 'http-status-codes';
@@ -15,16 +15,16 @@ const bodyValidation: yup.SchemaOf<IRedes> = yup
     status_rede: yup.number().required(),
   });
 
-export const create = async (
-  req: Request<{}, {}, IRedes>,
-  res: Response,
+export const createBodyValidator: RequestHandler = async (
+  req,
+  res,
+  next,
 ) => {
-  let validateData: IRedes | undefined = undefined;
-
   try {
-    validateData = await bodyValidation.validate(req.body, {
+    await bodyValidation.validate(req.body, {
       abortEarly: false,
     });
+    return next();
   } catch (err) {
     const yupError = err as yup.ValidationError;
 
@@ -39,8 +39,13 @@ export const create = async (
       errors,
     });
   }
+};
 
-  console.log(validateData);
+export const create = async (
+  req: Request<{}, {}, IRedes>,
+  res: Response,
+) => {
+  console.log(req.body);
 
-  return res.send(validateData);
+  return res.send(req.body);
 };
