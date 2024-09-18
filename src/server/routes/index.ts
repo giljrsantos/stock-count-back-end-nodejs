@@ -10,7 +10,7 @@ router.get('/api/v1/health', (_, res) => {
 
 router.post(
   '/api/v1/redes',
-  RedesController.createBodyValidator,
+  RedesController.createValidation,
   RedesController.create,
 );
 
