@@ -55,6 +55,14 @@ E no terminal você deve chamar `npm run format`
   },
 ```
 
+# Endpoints
+### Rede(privado)
+- GET /redes Busca uma lista de rede, com paginação e filtro por nome, filtro por id
+- POST /redes Criar uma nova Rede
+- GET /redes/:id Busca apenas uma rede pelo seu id
+- PUT /redes/:id Atualiza uma rede pelo seu id
+- DELETE /redes/:id Apaga a cidade pelo seu id
+
 
 
 

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import * as yup from 'yup';
 import { IRedes } from '../../../interface/i-Redes';
 import { validation } from '../../shared/middlewares';
+import { StatusCodes } from 'http-status-codes';
 
 export const createValidation = validation((getSchema) => ({
   body: getSchema<IRedes>(
@@ -23,5 +24,7 @@ export const create = async (
 ) => {
   console.log(req.body);
 
-  return res.send(req.body);
+  return res
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
+    .send('Não implementado!');
 };
