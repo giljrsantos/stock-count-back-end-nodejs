@@ -7,9 +7,12 @@ A funcionalidade dessa API é um `CRUD` com os métodos `GET, POST, PATCH, PUT e
 
 ```json
 "dependencies": {
+    "@types/jest": "^29.5.13",
     "express": "^4.19.2",
     "http-status-code": "^2.1.0",
-    "yup": "^1.0.2"
+    "yup": "^1.0.2",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
 },
 "devDependencies": {
     "@types/express": "^4.17.21",
@@ -17,7 +20,9 @@ A funcionalidade dessa API é um `CRUD` com os métodos `GET, POST, PATCH, PUT e
     "dotenv": "^16.4.5",
     "ts-node-dev": "^2.0.0",
     "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "@types/supertest": "^6.0.2",
+    "supertest": "^7.0.0",
 }
 ```
 

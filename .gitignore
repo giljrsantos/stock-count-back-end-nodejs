@@ -2,3 +2,5 @@
 dadosAula.txt
 .env
 package-lock.json
+/build
+/coverage
