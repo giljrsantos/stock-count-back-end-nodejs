@@ -14,10 +14,28 @@ router.get(
   RedesController.getAll,
 );
 
+router.get(
+  '/api/v1/redes/:id',
+  RedesController.getByIdValidation,
+  RedesController.getById,
+);
+
 router.post(
   '/api/v1/redes',
   RedesController.createValidation,
   RedesController.create,
+);
+
+router.put(
+  '/api/v1/redes/:id',
+  RedesController.updateByIdValidation,
+  RedesController.updateById,
+);
+
+router.delete(
+  '/api/v1/redes/:id',
+  RedesController.deleteByIdValidation,
+  RedesController.deleteById,
 );
 
 export { router };
