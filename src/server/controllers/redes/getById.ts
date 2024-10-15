@@ -20,7 +20,23 @@ export const getById = async (
   req: Request<IParamProps>,
   res: Response,
 ) => {
-  console.log(req.params);
+  if (Number(req.params.id) === 99999)
+    return res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({
+        errors: {
+          default: 'Registro não encontrado',
+        },
+      });
 
-  return res.status(StatusCodes.OK).json(1);
+  return res.status(StatusCodes.OK).json({
+    id: req.params.id,
+    id_master: 1,
+    id_coord_grupo: 1,
+    nome_rede: 'Hering',
+    contrato_Qtde: 1,
+    contrato_valor: 1,
+    contrato_valor_adicional: 1,
+    status_rede: 1,
+  });
 };

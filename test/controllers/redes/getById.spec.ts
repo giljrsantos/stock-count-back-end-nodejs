@@ -1,22 +1,47 @@
 import { StatusCodes } from 'http-status-codes';
 import { testServer } from '../../jest.setup';
 
-describe('Redes - Buscar Registro Com o param id expecifico', () => {
-  it('buscar registro com o id = 1', async () => {
-    const resGetById = await testServer.get(
-      '/api/v1/redes/1',
+describe('Redes - getById', () => {
+  it('buscar registro por id', async () => {
+    const resCreated = await testServer
+      .post('/api/v1/redes')
+      .send({
+        id_master: 1,
+        id_coord_grupo: 1,
+        nome_rede: 'Hering',
+        contrato_Qtde: 1,
+        contrato_valor: 1,
+        contrato_valor_adicional: 1,
+        status_rede: 1,
+      });
+
+    expect(resCreated.statusCode).toEqual(
+      StatusCodes.CREATED,
     );
 
-    expect(resGetById.statusCode).toEqual(StatusCodes.OK);
+    const resSearchRegister = await testServer.get(
+      `/api/v1/redes/${resCreated.body}`,
+    );
+
+    expect(resSearchRegister.statusCode).toEqual(
+      StatusCodes.OK,
+    );
+    expect(resSearchRegister.body).toHaveProperty(
+      'nome_rede',
+    );
   });
 
-  it('Tentando buscar registro com o param id como string', async () => {
-    const resGetById = await testServer.get(
-      '/api/v1/redes/id',
-    );
+  it('Tentando buscar registro que não existe', async () => {
+    const resGetById = await testServer
+      .get('/api/v1/redes/99999')
+      .send();
 
     expect(resGetById.statusCode).toEqual(
-      StatusCodes.BAD_REQUEST,
+      StatusCodes.INTERNAL_SERVER_ERROR,
+    );
+
+    expect(resGetById.body).toHaveProperty(
+      'errors.default',
     );
   });
 });

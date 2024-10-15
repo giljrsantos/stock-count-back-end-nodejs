@@ -18,9 +18,22 @@ export const getAll = async (
   req: Request<{}, {}, {}, IQueryProps>,
   res: Response,
 ) => {
-  console.log(req.query);
+  res.setHeader(
+    'access-control-expose-headers',
+    'x-total-count',
+  );
+  res.setHeader('x-total-count', 1);
 
-  return res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .send('Não implementado!');
+  return res.status(StatusCodes.OK).json([
+    {
+      id: 1,
+      id_master: 1,
+      id_coord_grupo: 1,
+      nome_rede: 'Hering',
+      contrato_Qtde: 1,
+      contrato_valor: 1,
+      contrato_valor_adicional: 1,
+      status_rede: 1,
+    },
+  ]);
 };
